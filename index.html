@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scheduled Exercise</title>
-  <!-- Tailwind CSS for modern day-themed styling -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @keyframes scaleUp {
@@ -18,18 +17,20 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col font-sans antialiased">
 
-  <!-- APP HEADER -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/85 px-4 py-3 md:py-4">
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 py-3 md:py-4">
     <div class="max-w-4xl mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-2.5">
         <div class="bg-emerald-600 text-white p-2.5 rounded-xl font-black text-lg tracking-wider shadow-md shadow-emerald-600/10">
           SCH
         </div>
         <div>
-          <h1 class="text-xl font-black tracking-tight text-slate-900">Scheduled Exercise</h1>
+          <h1 class="text-xl font-black tracking-tight text-slate-900 flex items-center">
+            Scheduled Exercise
+          </h1>
           <p class="text-xs text-slate-500 font-medium">30-Min Cardio & Pump Builder</p>
         </div>
       </div>
+
       <div class="flex items-center space-x-3">
         <div class="hidden sm:flex flex-col items-end">
           <span id="header-date" class="text-sm font-semibold text-slate-700">Today</span>
@@ -42,7 +43,6 @@
     </div>
   </header>
 
-  <!-- MAIN NAVIGATION TABS -->
   <main class="flex-1 max-w-4xl w-full mx-auto p-4 space-y-6">
     <div id="navigation-tabs" class="grid grid-cols-3 gap-2 bg-white p-1.5 rounded-2xl border border-slate-200 shadow-sm">
       <button onclick="switchTab('today')" id="tab-today" class="flex items-center justify-center space-x-2 py-3 px-3 rounded-xl text-sm font-bold transition-all duration-200 bg-emerald-600 text-white shadow-md shadow-emerald-600/10">
@@ -66,22 +66,16 @@
       </button>
     </div>
 
-    <!-- TAB 1: TODAY'S WORKOUT SECTION -->
     <div id="content-today" class="space-y-6">
-      <!-- Weekly Day Planner -->
       <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between overflow-x-auto space-x-2 scrollbar-none">
         <span class="text-xs text-slate-500 font-extrabold uppercase tracking-wider min-w-max mr-2">Plan your week:</span>
         <div id="day-selector-container" class="flex space-x-1">
-          <!-- Populated by JavaScript -->
-        </div>
+          </div>
       </div>
 
-      <!-- Workout Main Panel -->
       <div id="workout-panel" class="bg-white rounded-3xl border border-slate-200 shadow-md overflow-hidden">
-        <!-- Content dynamically injected via renderWorkout() -->
-      </div>
+        </div>
 
-      <!-- Workout Philosophy Box -->
       <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-start space-x-3">
         <svg class="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -92,10 +86,8 @@
       </div>
     </div>
 
-    <!-- TAB 2: PROGRESS & HISTORY -->
     <div id="content-history" class="hidden space-y-6">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Weight tracker -->
         <div class="bg-white rounded-3xl border border-slate-200 p-5 space-y-4 shadow-sm">
           <div>
             <h3 class="text-lg font-bold text-slate-900">Weight Tracker</h3>
@@ -106,24 +98,20 @@
             <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-xl text-sm transition-all shrink-0">Add Log</button>
           </form>
           <div id="weight-log-list" class="space-y-2 max-h-56 overflow-y-auto pr-1">
-            <!-- Populated dynamically -->
-          </div>
+            </div>
         </div>
 
-        <!-- History records -->
         <div class="bg-white rounded-3xl border border-slate-200 p-5 space-y-4 shadow-sm">
           <div>
             <h3 class="text-lg font-bold text-slate-900">Completed Sessions</h3>
             <p class="text-xs text-slate-500">Log of completed 30-minute blocks.</p>
           </div>
           <div id="workout-history-list" class="space-y-2 max-h-80 overflow-y-auto pr-1">
-            <!-- Populated dynamically -->
-          </div>
+            </div>
         </div>
       </div>
     </div>
 
-    <!-- TAB 3: DETAILED GUIDES -->
     <div id="content-guides" class="hidden">
       <div class="bg-white rounded-3xl border border-slate-200 p-6 shadow-sm space-y-5">
         <div>
@@ -166,10 +154,8 @@
       </div>
     </div>
 
-    <!-- ACTIVE WORKOUT PANEL -->
     <div id="active-workout-wrapper" class="hidden fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4">
       <div class="bg-white rounded-3xl border border-slate-200 shadow-2xl overflow-hidden max-w-lg w-full">
-        <!-- Header -->
         <div class="p-4 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
           <div>
             <span id="active-routine-name" class="text-emerald-700 text-xs font-bold uppercase tracking-wider">Active Session</span>
@@ -177,18 +163,15 @@
           </div>
           <button onclick="quitWorkout()" class="text-xs text-rose-600 hover:text-rose-700 font-bold bg-rose-50 px-3 py-1.5 rounded-xl border border-rose-100 transition-all">Quit Workout</button>
         </div>
-        <!-- Progress bar -->
         <div class="w-full bg-slate-100 h-1.5">
           <div id="active-progress" class="bg-emerald-500 h-full transition-all duration-300" style="width: 0%"></div>
         </div>
-        <!-- Center display -->
         <div class="p-6 text-center space-y-6">
           <div class="space-y-1">
             <h3 id="active-step-title" class="text-2xl font-black text-slate-900">Step Title</h3>
             <div id="active-step-badge" class="inline-block px-3 py-1 bg-slate-100 rounded-full text-xs font-bold text-slate-600 mt-1 border border-slate-200/50">⏱️ Timed Step</div>
           </div>
           <div class="py-4 flex justify-center">
-            <!-- Timer Display -->
             <div id="active-timer-container" class="relative w-44 h-44 rounded-full border-4 border-slate-100 flex flex-col justify-center items-center shadow-sm bg-slate-50">
               <svg class="absolute top-0 left-0 w-full h-full -rotate-90">
                 <circle cx="88" cy="88" r="84" class="stroke-emerald-500 fill-none transition-all duration-100" stroke-width="4" id="timer-circle" stroke-dasharray="527.78" stroke-dashoffset="0" />
@@ -196,18 +179,15 @@
               <span id="active-timer-text" class="text-4xl font-black text-slate-800 tracking-widest">00:00</span>
               <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Remaining</span>
             </div>
-            <!-- Reps Display -->
             <div id="active-reps-container" class="hidden w-44 h-44 rounded-full border-4 border-emerald-100 bg-emerald-50 flex flex-col justify-center items-center">
               <span id="active-reps-text" class="text-3xl font-black text-emerald-800">15 reps</span>
               <span class="text-[10px] text-emerald-600 font-bold uppercase tracking-widest mt-2">Complete & Tap Next</span>
             </div>
           </div>
-          <!-- Tip box -->
           <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/60 text-left">
             <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Coach Guide Tip</span>
             <p id="active-step-tip" class="text-xs text-slate-600 leading-relaxed">Checklist tip details go here...</p>
           </div>
-          <!-- Action controls -->
           <div class="pt-2 flex justify-between items-center gap-3">
             <button onclick="prevStep()" id="btn-prev" class="flex-1 py-3 px-4 rounded-xl text-xs font-extrabold border tracking-wider transition-all uppercase border-slate-200 hover:bg-slate-50 text-slate-600">Previous</button>
             <button onclick="toggleTimer()" id="btn-pause" class="flex-1 py-3 px-4 rounded-xl text-xs font-extrabold tracking-wider transition-all uppercase bg-emerald-100 border border-emerald-200 text-emerald-800 hover:bg-emerald-200">Pause</button>
@@ -217,7 +197,6 @@
       </div>
     </div>
 
-    <!-- COMPLETION MODAL -->
     <div id="completion-modal" class="hidden fixed inset-0 z-50 bg-slate-900/45 backdrop-blur-sm flex items-center justify-center p-4">
       <div class="bg-white border border-slate-200 max-w-md w-full p-6 rounded-2xl text-center space-y-4 animate-scale-up shadow-xl">
         <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto border border-emerald-100">
@@ -247,7 +226,6 @@
     <p class="text-[10px] text-slate-400 mt-1">Keep treadmill speeds steady. Keep your cardio and strength routines balanced.</p>
   </footer>
 
-  <!-- SCRIPTING CORE FOR STATE MANAGEMENT -->
   <script>
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     let currentDate = new Date();
@@ -310,4 +288,305 @@
       daysOfWeek.forEach(day => {
         const isCurrent = day === currentDayName;
         const isSelected = day === selectedDay;
-   
+        
+        let btnClass = `px-3 py-1.5 rounded-xl text-xs font-bold transition-all `;
+        if (isSelected) {
+          btnClass += `bg-slate-800 text-white border border-slate-700 shadow-sm `;
+        } else {
+          btnClass += `bg-slate-100 text-slate-600 hover:bg-slate-200 `;
+        }
+        if (isCurrent) {
+          btnClass += `ring-2 ring-emerald-500 ring-offset-2 `;
+        }
+
+        const button = document.createElement('button');
+        button.className = btnClass;
+        button.onclick = () => selectDay(day);
+        button.innerText = `${day.substring(0, 3)} ${isCurrent ? '(Today)' : ''}`;
+        container.appendChild(button);
+      });
+    }
+
+    function selectDay(day) {
+      selectedDay = day;
+      renderDaySelectors();
+      renderWorkout();
+    }
+
+    function renderWorkout() {
+      const type = getWorkoutTypeByDay(selectedDay);
+      const panel = document.getElementById('workout-panel');
+      
+      if (type === "REST") {
+        panel.innerHTML = `
+          <div class="bg-gradient-to-br from-indigo-50/50 to-emerald-50/50 p-6 text-center space-y-4 py-12">
+            <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto border border-indigo-200">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-2xl font-black text-slate-900">${selectedDay} Rest & Recover</h3>
+              <p class="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+                Your muscles grow and heal during rest periods. Use today to fully rehydrate, relax, and let your body prepare for tomorrow morning's efforts.
+              </p>
+            </div>
+            <div class="pt-2">
+              <span class="bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-indigo-200">
+                Recovery Mode Active
+              </span>
+            </div>
+          </div>`;
+        return;
+      }
+
+      const activeList = type === "A" ? routineASteps : routineBSteps;
+      let stepsHTML = '';
+      
+      activeList.forEach((step, idx) => {
+        const value = step.type === 'timer' ? formatTime(step.duration) : step.reps;
+        stepsHTML += `
+          <div class="flex items-start space-x-3 p-3 bg-slate-50 rounded-2xl border border-slate-100 hover:border-slate-200 hover:bg-slate-100/50 transition-all">
+            <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-xs font-black text-slate-600 shrink-0 mt-0.5">${idx + 1}</div>
+            <div class="flex-1">
+              <div class="flex justify-between items-center">
+                <h4 class="text-sm font-bold text-slate-800">${step.title}</h4>
+                <span class="text-xs font-semibold text-emerald-700 bg-emerald-100 px-2.5 py-0.5 rounded-lg border border-emerald-200">${value}</span>
+              </div>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">${step.desc}</p>
+            </div>
+          </div>`;
+      });
+
+      panel.innerHTML = `
+        <div class="p-6 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 border-b border-slate-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide border border-emerald-200">Routine ${type}</span>
+              <span class="text-slate-500 text-xs font-bold">• 30 Minutes</span>
+            </div>
+            <h2 class="text-2xl font-black text-slate-900 mt-2">${type === "A" ? "Muscle Pump & Paced Spin" : "Challenge Treadmill Jog"}</h2>
+            <p class="text-sm text-slate-600 mt-1 max-w-lg leading-relaxed">
+              ${type === "A" ? "Target legs, chest, and arms with localized bodyweight circuits, finishing with cardiovascular cycling intervals." : "Challenge cardio systems and burn calories efficiently using the weighted water-bottle jog hack."}
+            </p>
+          </div>
+          <button onclick="startWorkout()" class="w-full md:w-auto bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black px-6 py-3.5 rounded-2xl shadow-md shadow-emerald-500/10 flex items-center justify-center space-x-2 transition-all duration-300 transform active:scale-98">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <span>START WORKOUT (30M)</span>
+          </button>
+        </div>
+        <div class="p-6 space-y-4">
+          <h3 class="text-xs font-bold uppercase tracking-widest text-slate-400">Workout Steps Breakdown</h3>
+          <div class="space-y-2.5">${stepsHTML}</div>
+        </div>`;
+    }
+
+    function switchTab(tabId) {
+      document.getElementById('content-today').classList.add('hidden');
+      document.getElementById('content-history').classList.add('hidden');
+      document.getElementById('content-guides').classList.add('hidden');
+
+      document.getElementById('tab-today').className = 'flex items-center justify-center space-x-2 py-3 px-3 rounded-xl text-sm font-bold transition-all duration-200 text-slate-500 hover:text-slate-800 hover:bg-slate-50';
+      document.getElementById('tab-history').className = 'flex items-center justify-center space-x-2 py-3 px-3 rounded-xl text-sm font-bold transition-all duration-200 text-slate-500 hover:text-slate-800 hover:bg-slate-50';
+      document.getElementById('tab-guides').className = 'flex items-center justify-center space-x-2 py-3 px-3 rounded-xl text-sm font-bold transition-all duration-200 text-slate-500 hover:text-slate-800 hover:bg-slate-50';
+
+      document.getElementById(`content-${tabId}`).classList.remove('hidden');
+      document.getElementById(`tab-${tabId}`).className = 'flex items-center justify-center space-x-2 py-3 px-3 rounded-xl text-sm font-bold transition-all duration-200 bg-emerald-600 text-white shadow-md shadow-emerald-600/10';
+    }
+
+    // Timer format assistant
+    function formatTime(secs) {
+      const m = Math.floor(secs / 60).toString().padStart(2, '0');
+      const s = (secs % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    // Active workout logic
+    function startWorkout() {
+      const type = getWorkoutTypeByDay(selectedDay);
+      activeSteps = type === "A" ? routineASteps : routineBSteps;
+      currentStepIndex = 0;
+      
+      document.getElementById('active-routine-name').innerText = `Active Session: Routine ${type}`;
+      document.getElementById('active-workout-wrapper').classList.remove('hidden');
+      
+      setupStep(0);
+    }
+
+    function setupStep(index) {
+      const step = activeSteps[index];
+      document.getElementById('active-step-index').innerText = `Step ${index + 1} of ${activeSteps.length}`;
+      document.getElementById('active-step-title').innerText = step.title;
+      document.getElementById('active-step-tip').innerText = step.desc;
+      document.getElementById('active-progress').style.width = `${((index + 1) / activeSteps.length) * 100}%`;
+
+      if (step.type === "timer") {
+        document.getElementById('active-step-badge').innerText = "⏱️ Timed Step";
+        document.getElementById('active-timer-container').classList.remove('hidden');
+        document.getElementById('active-reps-container').classList.add('hidden');
+        document.getElementById('btn-pause').classList.remove('hidden');
+        
+        timerSeconds = step.duration;
+        document.getElementById('active-timer-text').innerText = formatTime(timerSeconds);
+        
+        // Reset and run timer
+        clearInterval(timerInterval);
+        isTimerRunning = true;
+        document.getElementById('btn-pause').innerText = "Pause";
+        
+        timerInterval = setInterval(() => {
+          if (isTimerRunning && timerSeconds > 0) {
+            timerSeconds--;
+            document.getElementById('active-timer-text').innerText = formatTime(timerSeconds);
+            
+            // Update circular svg outline
+            const circle = document.getElementById('timer-circle');
+            const percent = timerSeconds / step.duration;
+            const offset = 527.78 * (1 - percent);
+            circle.setAttribute('stroke-dashoffset', offset);
+          } else if (timerSeconds === 0 && isTimerRunning) {
+            clearInterval(timerInterval);
+            nextStep();
+          }
+        }, 1000);
+
+      } else {
+        clearInterval(timerInterval);
+        document.getElementById('active-step-badge').innerText = "🔢 Repetition Step";
+        document.getElementById('active-timer-container').classList.add('hidden');
+        document.getElementById('active-reps-container').classList.remove('hidden');
+        document.getElementById('btn-pause').classList.add('hidden');
+        document.getElementById('active-reps-text').innerText = s.reps;
+      }
+    }
+
+    function toggleTimer() {
+      isTimerRunning = !isTimerRunning;
+      document.getElementById('btn-pause').innerText = isTimerRunning ? "Pause" : "Resume";
+    }
+
+    function nextStep() {
+      if (currentStepIndex < activeSteps.length - 1) {
+        currentStepIndex++;
+        setupStep(currentStepIndex);
+      } else {
+        finishWorkout();
+      }
+    }
+
+    function prevStep() {
+      if (currentStepIndex > 0) {
+        currentStepIndex--;
+        setupStep(currentStepIndex);
+      }
+    }
+
+    function quitWorkout() {
+      if (confirm("Are you sure you want to quit this workout session? Your current progress won't be saved.")) {
+        clearInterval(timerInterval);
+        document.getElementById('active-workout-wrapper').classList.add('hidden');
+      }
+    }
+
+    function finishWorkout() {
+      clearInterval(timerInterval);
+      document.getElementById('active-workout-wrapper').classList.add('hidden');
+
+      // Update streaks
+      streak++;
+      document.getElementById('streak-count-desktop').innerText = streak;
+      document.getElementById('streak-count-mobile').innerText = streak;
+      document.getElementById('streak-modal-count').innerText = streak;
+
+      // Log workout history
+      const type = getWorkoutTypeByDay(selectedDay);
+      const dateStr = currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ` (${selectedDay.substring(0,3)})`;
+      workoutLogs.unshift({
+        date: dateStr,
+        type: `Routine ${type}`,
+        duration: "30 mins",
+        status: "Completed"
+      });
+
+      updateHistoryUI();
+      document.getElementById('completion-modal').classList.remove('hidden');
+    }
+
+    function closeCompletionModal() {
+      document.getElementById('completion-modal').classList.add('hidden');
+    }
+
+    // Weight logging system
+    function logWeight(event) {
+      event.preventDefault();
+      const input = document.getElementById('weight-input');
+      const val = parseFloat(input.value);
+      if (isNaN(val)) return;
+
+      const dateStr = currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      weightLogs.unshift({
+        id: Date.now(),
+        date: dateStr,
+        weight: val
+      });
+      input.value = '';
+      updateHistoryUI();
+    }
+
+    function deleteWeightLog(id) {
+      weightLogs = weightLogs.filter(log => log.id !== id);
+      updateHistoryUI();
+    }
+
+    function updateHistoryUI() {
+      // Render weights
+      const weightList = document.getElementById('weight-log-list');
+      if (weightLogs.length === 0) {
+        weightList.innerHTML = `<p class="text-xs text-slate-400 text-center py-4">No weight entries yet. Log your weight to see trends.</p>`;
+      } else {
+        let weightHTML = '';
+        weightLogs.forEach(log => {
+          weightHTML += `
+            <div class="flex justify-between items-center bg-slate-50 p-2.5 rounded-xl border border-slate-100 animate-scale-up">
+              <div class="flex items-center space-x-2">
+                <div class="w-2 h-2 rounded-full bg-emerald-500"></div>
+                <span class="text-xs font-semibold text-slate-500">${log.date}</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <span class="text-sm font-black text-slate-850">${log.weight} kg</span>
+                <button onclick="deleteWeightLog(${log.id})" class="p-1 hover:bg-slate-250 rounded-lg transition-colors">
+                  <svg class="w-5 h-5 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </button>
+              </div>
+            </div>`;
+        });
+        weightList.innerHTML = weightHTML;
+      }
+
+      // Render workout logs
+      const historyList = document.getElementById('workout-history-list');
+      if (workoutLogs.length === 0) {
+        historyList.innerHTML = `<p class="text-xs text-slate-400 text-center py-8">Your completed workouts will appear here. Start tomorrow morning to secure your first log!</p>`;
+      } else {
+        let historyHTML = '';
+        workoutLogs.forEach(log => {
+          historyHTML += `
+            <div class="flex justify-between items-center bg-slate-50 p-3 rounded-xl border border-slate-100 animate-scale-up">
+              <div>
+                <div class="flex items-center space-x-1.5">
+                  <h4 class="text-xs font-bold text-slate-800">${log.type}</h4>
+                  <span class="bg-emerald-100 text-emerald-800 border border-emerald-200 text-[10px] px-2 rounded-full font-bold">${log.status}</span>
+                </div>
+                <p class="text-[10px] text-slate-400 mt-1">${log.date}</p>
+              </div>
+              <span class="text-xs font-bold text-slate-600 bg-white border border-slate-200 px-2.5 py-1 rounded-lg">${log.duration}</span>
+            </div>`;
+        });
+        historyList.innerHTML = historyHTML;
+      }
+    }
+  </script>
+</body>
+</html>
